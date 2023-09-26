@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-style: normal;
+    src: url("../assets/fonts/Poppins.ttf");
+    font-family: 'Poppins';
+}
+
