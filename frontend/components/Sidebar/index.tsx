@@ -1,6 +1,5 @@
 import {FaDesktop, FaHome, FaUsers} from "react-icons/fa";
 import {AiFillDatabase} from "react-icons/ai";
-import {BiBadgeCheck} from "react-icons/bi";
 import {Heading, Text} from "@radix-ui/themes"
 import Link from "next/link";
 import {useEffect, useState} from "react";
@@ -36,11 +35,11 @@ const Sidebar = () => {
     }, []);
 
     return (
-        <div className={'bg-blue-800 h-screen border-r-2'}>
-            <div className={'h-14 flex justify-center items-center border-gray-500 pt-8'}>
-                <BiBadgeCheck size={30} className={"text-white"}/>
-                <Heading size={"4"} style={{color: "white", paddingLeft: "4px"}} className={"hidden md:flex"}>Badge
-                    IN</Heading>
+        <div className={'bg-blue-900 h-screen border-r-2'}>
+            <div className={'h-14 flex px-12 border-gray-500 pt-8'}>
+                <Link href={"#"} className={'flex items-center text-white my-4'}>
+                    <Heading size={"4"} className={"text-white uppercase"}>Gougal</Heading>
+                </Link>
             </div>
             <div className="py-4 px-8 mt-4">
                 <div className="flex flex-col md:items-start items-center justify-start">

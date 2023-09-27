@@ -1,5 +1,7 @@
-import BadgePic from "../assets/imgs/badge.png";
+import Man from "../assets/imgs/man.png";
+import Woman from "../assets/imgs/woman.png";
 
 export {
-    BadgePic
+    Man,
+    Woman
 }

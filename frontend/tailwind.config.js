@@ -16,9 +16,9 @@ module.exports = {
                 maxWidth: "95vw", marginLeft: "auto", marginRight: "auto", "@screen md": {
                     maxWidth: "95vw",
                 }, "@screen lg": {
-                    maxWidth: "80vw",
+                    maxWidth: "90vw",
                 }, "@screen xl": {
-                    maxWidth: "80vw",
+                    maxWidth: "90vw",
                 },
             },
         })

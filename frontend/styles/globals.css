@@ -4,7 +4,17 @@
 
 @font-face {
     font-style: normal;
-    src: url("../assets/fonts/Poppins.ttf");
-    font-family: 'Poppins';
+    src: url("../assets/fonts/Inter.ttf");
+    font-family: 'Inter';
+}
+
+@font-face {
+    font-style: normal;
+    src: url("../assets/fonts/ChocolatesMedium.otf");
+    font-family: 'Chocolates';
+}
+
+* {
+    font-family: 'Chocolates';
 }
 
