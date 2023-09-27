@@ -1,12 +1,17 @@
 import {FaBars, FaGithub, FaHome} from "react-icons/fa";
 import {Button, Dialog, Flex, Text, TextField} from "@radix-ui/themes";
+import {useRouter} from "next/router";
 
 const Header = () => {
+    const router = useRouter();
+    const toHome = () => {
+        router.push("/");
+    }
     return (
         <header className={"bg-white h-16 fixed sticky left-0 top-0 z-50 border-b"}>
             <div className="container mx-auto h-full bg-white">
                 <div className={"flex justify-between items-center h-full"}>
-                    <div className={"bg-white"}>
+                    <div onClick={toHome} className={"bg-white cursor-pointer"}>
                         <h2 className={"text-gray-600 font-bold text-xl flex items-center"}>
                             <FaHome size={25} className={'text-green-500'}/>
                             <span className={"text-green-500 pl-2"}>G</span>ou<span
@@ -60,7 +65,7 @@ const Header = () => {
                                 </Flex>
                             </Dialog.Content>
                         </Dialog.Root>
-                        <FaGithub size={26} />
+                        <FaGithub size={26}/>
                     </div>
                 </div>
             </div>
