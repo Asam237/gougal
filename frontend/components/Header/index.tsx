@@ -30,17 +30,32 @@ const Header = () => {
                             </Dialog.Trigger>
                             <Dialog.Content style={{maxWidth: 450}}>
                                 <Dialog.Title>Ajouter un service</Dialog.Title>
-                                <Dialog.Description size="2" mb="4">
-                                    Make changes to your profile.
-                                </Dialog.Description>
                                 <Flex direction="column" gap="3">
                                     <label>
                                         <Text as="div" size="2" mb="1" weight="bold">
-                                            Name
+                                            Nom
                                         </Text>
                                         <TextField.Input
                                             defaultValue="Freja Johnsen"
-                                            placeholder="Enter your full name"
+                                            placeholder="Entrez votre nom"
+                                        />
+                                    </label>
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Position
+                                        </Text>
+                                        <TextField.Input
+                                            defaultValue="Software Developer"
+                                            placeholder="Profile"
+                                        />
+                                    </label>
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Position
+                                        </Text>
+                                        <TextField.Input
+                                            defaultValue="Maroua"
+                                            placeholder="Entrez votre position"
                                         />
                                     </label>
                                     <label>
@@ -48,8 +63,17 @@ const Header = () => {
                                             Email
                                         </Text>
                                         <TextField.Input
-                                            defaultValue="freja@example.com"
-                                            placeholder="Enter your email"
+                                            defaultValue="abbasali@example.com"
+                                            placeholder="Entrez votre email"
+                                        />
+                                    </label>
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Sexe
+                                        </Text>
+                                        <TextField.Input
+                                            defaultValue="abbasali@example.com"
+                                            placeholder="Entrez votre email"
                                         />
                                     </label>
                                 </Flex>

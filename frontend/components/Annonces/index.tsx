@@ -1,4 +1,4 @@
-import {Avatar, Box, Button, Card, Dialog, Flex, Text, TextField} from "@radix-ui/themes";
+import {Avatar, Box, Button, Card, Dialog, Flex, Text, TextArea, TextField} from "@radix-ui/themes";
 import {FaMailBulk, FaMapMarker, FaPhone} from "react-icons/fa";
 import Link from "next/link";
 import {useEffect, useState} from "react";
@@ -203,21 +203,52 @@ const Annonces = () => {
                                 annonce
                             </button>
                         </Dialog.Trigger>
-
                         <Dialog.Content style={{maxWidth: 450}}>
                             <Dialog.Title>Ajouter une annonce</Dialog.Title>
-                            <Dialog.Description size="2" mb="4">
-                                Make changes to your profile.
-                            </Dialog.Description>
-
                             <Flex direction="column" gap="3">
                                 <label>
                                     <Text as="div" size="2" mb="1" weight="bold">
-                                        Name
+                                        Title
+                                    </Text>
+                                    <TextField.Input
+                                        defaultValue="title"
+                                        placeholder="Title"
+                                    />
+                                </label>
+                                <label>
+                                    <Text as="div" size="2" mb="1" weight="bold">
+                                        Description
+                                    </Text>
+                                    <TextArea
+                                        defaultValue="descripton"
+                                        placeholder="description"
+                                    />
+                                </label>
+                                <label>
+                                    <Text as="div" size="2" mb="1" weight="bold">
+                                        Nom
                                     </Text>
                                     <TextField.Input
                                         defaultValue="Freja Johnsen"
-                                        placeholder="Enter your full name"
+                                        placeholder="Entrez votre nom"
+                                    />
+                                </label>
+                                <label>
+                                    <Text as="div" size="2" mb="1" weight="bold">
+                                        Position
+                                    </Text>
+                                    <TextField.Input
+                                        defaultValue="Software Developer"
+                                        placeholder="Profile"
+                                    />
+                                </label>
+                                <label>
+                                    <Text as="div" size="2" mb="1" weight="bold">
+                                        Position
+                                    </Text>
+                                    <TextField.Input
+                                        defaultValue="Maroua"
+                                        placeholder="Entrez votre position"
                                     />
                                 </label>
                                 <label>
@@ -225,12 +256,20 @@ const Annonces = () => {
                                         Email
                                     </Text>
                                     <TextField.Input
-                                        defaultValue="freja@example.com"
-                                        placeholder="Enter your email"
+                                        defaultValue="abbasali@example.com"
+                                        placeholder="Entrez votre email"
+                                    />
+                                </label>
+                                <label>
+                                    <Text as="div" size="2" mb="1" weight="bold">
+                                        Sexe
+                                    </Text>
+                                    <TextField.Input
+                                        defaultValue="abbasali@example.com"
+                                        placeholder="Entrez votre email"
                                     />
                                 </label>
                             </Flex>
-
                             <Flex gap="3" mt="4" justify="end">
                                 <Dialog.Close>
                                     <Button variant="soft" color="gray">
@@ -238,7 +277,7 @@ const Annonces = () => {
                                     </Button>
                                 </Dialog.Close>
                                 <Dialog.Close>
-                                    <Button color={"green"}>Save</Button>
+                                    <Button color={"red"}>Save</Button>
                                 </Dialog.Close>
                             </Flex>
                         </Dialog.Content>

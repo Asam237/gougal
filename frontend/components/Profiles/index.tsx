@@ -206,21 +206,34 @@ const Profiles = () => {
                                 className={"rounded-full text-white px-6 py-2 bg-red-500 text-base"}>Ajouter un service
                             </button>
                         </Dialog.Trigger>
-
                         <Dialog.Content style={{maxWidth: 450}}>
-                            <Dialog.Title>Edit profile</Dialog.Title>
-                            <Dialog.Description size="2" mb="4">
-                                Make changes to your profile.
-                            </Dialog.Description>
-
+                            <Dialog.Title>Ajouter un service</Dialog.Title>
                             <Flex direction="column" gap="3">
                                 <label>
                                     <Text as="div" size="2" mb="1" weight="bold">
-                                        Name
+                                        Nom
                                     </Text>
                                     <TextField.Input
                                         defaultValue="Freja Johnsen"
-                                        placeholder="Enter your full name"
+                                        placeholder="Entrez votre nom"
+                                    />
+                                </label>
+                                <label>
+                                    <Text as="div" size="2" mb="1" weight="bold">
+                                        Position
+                                    </Text>
+                                    <TextField.Input
+                                        defaultValue="Software Developer"
+                                        placeholder="Profile"
+                                    />
+                                </label>
+                                <label>
+                                    <Text as="div" size="2" mb="1" weight="bold">
+                                        Position
+                                    </Text>
+                                    <TextField.Input
+                                        defaultValue="Maroua"
+                                        placeholder="Entrez votre position"
                                     />
                                 </label>
                                 <label>
@@ -228,12 +241,20 @@ const Profiles = () => {
                                         Email
                                     </Text>
                                     <TextField.Input
-                                        defaultValue="freja@example.com"
-                                        placeholder="Enter your email"
+                                        defaultValue="abbasali@example.com"
+                                        placeholder="Entrez votre email"
+                                    />
+                                </label>
+                                <label>
+                                    <Text as="div" size="2" mb="1" weight="bold">
+                                        Sexe
+                                    </Text>
+                                    <TextField.Input
+                                        defaultValue="abbasali@example.com"
+                                        placeholder="Entrez votre email"
                                     />
                                 </label>
                             </Flex>
-
                             <Flex gap="3" mt="4" justify="end">
                                 <Dialog.Close>
                                     <Button variant="soft" color="gray">
@@ -241,7 +262,7 @@ const Profiles = () => {
                                     </Button>
                                 </Dialog.Close>
                                 <Dialog.Close>
-                                    <Button>Save</Button>
+                                    <Button color={"red"}>Save</Button>
                                 </Dialog.Close>
                             </Flex>
                         </Dialog.Content>
