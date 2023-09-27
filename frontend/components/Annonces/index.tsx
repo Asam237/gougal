@@ -17,7 +17,9 @@ const Annonces = () => {
             phone: "691 84 69 22",
             mail: "abbasaliaboubakar@gmail.com",
             marker: "Maroua",
-            sex: "M"
+            sex: "M",
+            title: "Cherche Femme de Ménage",
+            description: "Bonjour, recherche personne pour faire du ménage 1 fois par semaine idéalement dans l'après midi jeudi ou vendredi sur Hambye 1 à 2H de travail/semaine"
         },
         {
             name: "Abba Sali",
@@ -25,7 +27,9 @@ const Annonces = () => {
             phone: "691 84 69 22",
             mail: "abbasaliaboubakar@gmail.com",
             marker: "Maroua",
-            sex: "M"
+            sex: "M",
+            title: "Cherche Femme de Ménage",
+            description: "Bonjour, recherche personne pour faire du ménage 1 fois par semaine idéalement dans l'après midi jeudi ou vendredi sur Hambye 1 à 2H de travail/semaine"
         },
         {
             name: "Abba Sali",
@@ -33,7 +37,9 @@ const Annonces = () => {
             phone: "691 84 69 22",
             mail: "abbasaliaboubakar@gmail.com",
             marker: "Maroua",
-            sex: "M"
+            sex: "M",
+            title: "Cherche Femme de Ménage",
+            description: "Bonjour, recherche personne pour faire du ménage 1 fois par semaine idéalement dans l'après midi jeudi ou vendredi sur Hambye 1 à 2H de travail/semaine"
         },
         {
             name: "Abba Sali",
@@ -41,7 +47,9 @@ const Annonces = () => {
             phone: "691 84 69 22",
             mail: "abbasaliaboubakar@gmail.com",
             marker: "Maroua",
-            sex: "M"
+            sex: "M",
+            title: "Cherche Femme de Ménage",
+            description: "Bonjour, recherche personne pour faire du ménage 1 fois par semaine idéalement dans l'après midi jeudi ou vendredi sur Hambye 1 à 2H de travail/semaine"
         },
         {
             name: "Abba Sali",
@@ -49,7 +57,9 @@ const Annonces = () => {
             phone: "691 84 69 22",
             mail: "abbasaliaboubakar@gmail.com",
             marker: "Maroua",
-            sex: "F"
+            sex: "F",
+            title: "Cherche Femme de Ménage",
+            description: "Bonjour, recherche personne pour faire du ménage 1 fois par semaine idéalement dans l'après midi jeudi ou vendredi sur Hambye 1 à 2H de travail/semaine"
         },
         {
             name: "Abba Sali",
@@ -57,7 +67,9 @@ const Annonces = () => {
             phone: "691 84 69 22",
             mail: "abbasaliaboubakar@gmail.com",
             marker: "Maroua",
-            sex: "F"
+            sex: "F",
+            title: "Cherche Femme de Ménage",
+            description: "Bonjour, recherche personne pour faire du ménage 1 fois par semaine idéalement dans l'après midi jeudi ou vendredi sur Hambye 1 à 2H de travail/semaine"
         },
         {
             name: "Abba Sali",
@@ -65,7 +77,9 @@ const Annonces = () => {
             phone: "691 84 69 22",
             mail: "abbasaliaboubakar@gmail.com",
             marker: "Maroua",
-            sex: "M"
+            sex: "M",
+            title: "Cherche Femme de Ménage",
+            description: "Bonjour, recherche personne pour faire du ménage 1 fois par semaine idéalement dans l'après midi jeudi ou vendredi sur Hambye 1 à 2H de travail/semaine"
         },
     ];
     return (
@@ -95,12 +109,20 @@ const Annonces = () => {
                                                         {item.name}
                                                     </Text>
                                                     <Text as="div" size="2" color="gray">
-                                                        {item.position}
+                                                        {item.marker}
                                                     </Text>
                                                 </Box>
                                             </Flex>
                                             <Box p={"3"}>
                                                 <hr/>
+                                                <Flex direction="column">
+                                                    <Text as="div" size="4" my="4">
+                                                        {item.title}
+                                                    </Text>
+                                                    <Text as="div" size="2" color="gray">
+                                                        {item.description}
+                                                    </Text>
+                                                </Flex>
                                                 <Flex pt={"4"} justify="between" align="center">
                                                     <Flex>
                                                         <FaPhone color="gray" size={14}/>
@@ -123,17 +145,6 @@ const Annonces = () => {
                                                         {item.mail}
                                                     </Text>
                                                 </Flex>
-                                                <Flex pt={"4"} justify="between" align="center">
-                                                    <Flex>
-                                                        <FaMapMarker color="gray" size={14}/>
-                                                        <Text as="div" size="2" ml={"2"} color="gray">
-                                                            Position
-                                                        </Text>
-                                                    </Flex>
-                                                    <Text as="div" size="2" color="gray">
-                                                        {item.marker}
-                                                    </Text>
-                                                </Flex>
                                             </Box>
                                         </Card>
                                     ) : (
@@ -149,7 +160,7 @@ const Annonces = () => {
                                                     {item.name}
                                                 </Text>
                                                 <Text as="div" size="2" color="gray">
-                                                    {item.position}
+                                                    {item.marker}
                                                 </Text>
                                             </Box>
                                         </Flex>
@@ -175,17 +186,6 @@ const Annonces = () => {
                                                 </Flex>
                                                 <Text as="div" size="2" color="gray">
                                                     {item.mail}
-                                                </Text>
-                                            </Flex>
-                                            <Flex pt={"4"} justify="between" align="center">
-                                                <Flex>
-                                                    <FaMapMarker color="gray" size={14}/>
-                                                    <Text as="div" size="2" ml={"2"} color="gray">
-                                                        Position
-                                                    </Text>
-                                                </Flex>
-                                                <Text as="div" size="2" color="gray">
-                                                    {item.marker}
                                                 </Text>
                                             </Flex>
                                         </Box>
