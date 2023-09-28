@@ -4,10 +4,10 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
 const specs = swaggerJsDoc({
     definition: {
-        openapi: "3.1.0",
+        openapi: "3.0.1",
         info: {
-            title: "SentixID REST API Documentation",
-            version: "0.1.0"
+            title: "Gougal REST API Documentation",
+            version: "0.1.0",
         }
     },
     apis: ["./models/*.js", "./routes/*.js"]

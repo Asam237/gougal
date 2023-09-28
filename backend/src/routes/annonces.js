@@ -4,6 +4,41 @@ const Consts = require("../config/consts");
 const ErrorCodes = require("../config/error_codes");
 const Annonce = require("../models/annonces");
 
+/**
+ * @swagger
+ * tags:
+ *     name: Employee
+ * /employees/login:
+ *     post:
+ *         summary: Login d'un employe
+ *         tags: [Employee]
+ *         requestBody:
+ *             required: true
+ *             content:
+ *                 application/json:
+ *                     schema:
+ *                         type: object
+ *                         properties:
+ *                             login:
+ *                                 type: String
+ *                             password:
+ *                                 type: String
+ *         responses:
+ *             200:
+ *                 description: L'employee s'est connecte
+ *                 content:
+ *                     application/json:
+ *                         schema:
+ *                             type: object
+ *                             properties:
+ *                                 employee:
+ *                                   type: object
+ *                                   properties:
+ *                                     login:
+ *                                       type: string
+ *                                     password:
+ *                                       type: string
+ */
 router.post("/", async (req, res) => {
     const {name, position, phone, mail, marker, title, description, approve} = req.body;
     if (name == null || position == null || phone == null || mail == null || marker == null || title == null || description == null)
