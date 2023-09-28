@@ -5,10 +5,10 @@ const Consts = require("../config/consts");
 const ErrorCodes = require("../config/error_codes");
 
 router.post("/", async (req, res) => {
-    const {name, position, phone, mail, marker, sex, approve} = req.body;
-    if (name == null || position == null || phone == null || mail == null || null || marker == null || sex == null)
+    const {name, position, phone, mail, marker, approve} = req.body;
+    if (name == null || position == null || phone == null || mail == null || null || marker == null)
         return res.status(400).send(Consts.standardErrorResponse(ErrorCodes.INVALID_PARAMS));
-    let service = Service.register({name, position, phone, mail, marker, sex, approve: false});
+    let service = Service.register({name, position, phone, mail, marker, approve: false});
     service = await service.save();
     let r = Consts.newResponse();
     r.service = service;

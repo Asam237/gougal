@@ -140,15 +140,15 @@ router.post("/login", async (req, res) => {
  *                                          type: string
  *
  */
-router.get("/:me", async (req, res) => {
-    const me = req.params.me;
-    User.findOne({_id: me}).then(async (user) => {
-        if (!user)
-            return res.status(200).send(Consts.standardResponse(ErrorCode.INVALID_PARAMS));
-        let r = Consts.newResponse();
-        r.user = user;
-        return res.status(200).send(r);
-    }, (err) => Consts.errFallback(err, res));
-});
+// router.get("/:me", async (req, res) => {
+//     const me = req.params.me;
+//     User.findOne({_id: me}).then(async (user) => {
+//         if (!user)
+//             return res.status(200).send(Consts.standardResponse(ErrorCode.INVALID_PARAMS));
+//         let r = Consts.newResponse();
+//         r.user = user;
+//         return res.status(200).send(r);
+//     }, (err) => Consts.errorFallback(err, res));
+// });
 
 module.exports = router;

@@ -18,8 +18,6 @@ const mongoose = require("mongoose");
  *                     type: string
  *                 marker:
  *                     type: string
- *                 sex:
- *                     type: string
  */
 const Service = mongoose.model(
     "services",
@@ -30,7 +28,6 @@ const Service = mongoose.model(
         phone: {type: String},
         mail: {type: String},
         marker: {type: String},
-        sex: {type: String, enum: ["M", "S"]},
         approve: {type: Boolean}
     }, {
         statics: {

@@ -19,8 +19,6 @@ const mongoose = require("mongoose");
  *                     type: string
  *                 marker:
  *                     type: string
- *                 sex:
- *                     type: string
  *                 title:
  *                     type: string
  *                 description:
@@ -37,7 +35,6 @@ const Annonce = mongoose.model(
         phone: {type: String},
         mail: {type: String},
         marker: {type: String},
-        sex: {type: String, enum: ["M", "S"]},
         title: {type: String},
         description: {type: String},
         approve: {type: Boolean},

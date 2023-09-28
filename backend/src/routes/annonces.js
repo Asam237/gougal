@@ -5,10 +5,10 @@ const ErrorCodes = require("../config/error_codes");
 const Annonce = require("../models/annonces");
 
 router.post("/", async (req, res) => {
-    const {name, position, phone, mail, marker, sex, title, description, approve} = req.body;
-    if (name == null || position == null || phone == null || mail == null || null || marker == null || sex == null || title == null || description == null)
+    const {name, position, phone, mail, marker, title, description, approve} = req.body;
+    if (name == null || position == null || phone == null || mail == null || null || marker == null || title == null || description == null)
         return res.status(400).send(Consts.standardErrorResponse(ErrorCodes.INVALID_PARAMS));
-    let annonce = Annonce.register({name, position, phone, mail, marker, sex, title, description, approve: false});
+    let annonce = Annonce.register({name, position, phone, mail, marker, title, description, approve: false});
     annonce = await annonce.save();
     let r = Consts.newResponse();
     r.annonce = annonce;
