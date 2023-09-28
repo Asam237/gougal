@@ -24,8 +24,10 @@ mongoose.connect(MONGODB_URL).then(function () {
     console.log("connected to database");
 
     const annoncesRouter = require("./src/routes/annonces");
+    const servicesRouter = require("./src/routes/services");
 
     app.use("/annonces", annoncesRouter);
+    app.use("/services", servicesRouter);
     app.use('/swagger', swaggerUi.serve, swaggerUi.setup(specs));
 });
 

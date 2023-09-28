@@ -31,6 +31,7 @@ const Service = mongoose.model(
         mail: {type: String},
         marker: {type: String},
         sex: {type: String, enum: ["M", "S"]},
+        approve: {type: Boolean}
     }, {
         statics: {
             register(input) {
