@@ -3,78 +3,49 @@ import {FaMailBulk, FaMapMarker, FaPhone} from "react-icons/fa";
 import Link from "next/link";
 import {useEffect, useState} from "react";
 import Success from "../Success";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
+import {findAllServices, newService} from "../../hooks/api";
 
 const Profiles = () => {
 
     const [path, setPath] = useState("");
     const [success, setSuccess] = useState(false);
+    const [name, setName] = useState("");
+    const [position, setPosition] = useState("");
+    const [phone, setPhone] = useState("");
+    const [mail, setMail] = useState("");
+    const [marker, setMarker] = useState("");
+    const dataService: any = {name, position, phone, mail, marker};
 
     useEffect(() => {
         setPath(window.location.pathname);
     }, []);
 
-    const handleSuccess = () => {
-        setSuccess(true);
+    const {data} = useQuery({
+        queryKey: ["services"],
+        queryFn: async () => {
+            const res = await findAllServices();
+            return res.data;
+        }
+    });
+
+    const queryClient = useQueryClient();
+    const addServiceMutation = useMutation({
+        mutationKey: ["services"],
+        mutationFn: async () => {
+            await newService(dataService);
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: ['services']})
+        },
+        onError: () => {
+        }
+    });
+    const handleService = (e: any) => {
+        e.preventDefault();
+        addServiceMutation.mutate(dataService);
     }
 
-    const annonces = [
-        {
-            name: "Abba Sali",
-            position: "Software Developer",
-            phone: "691 84 69 22",
-            mail: "abbasaliaboubakar@gmail.com",
-            marker: "Maroua",
-            sex: "M"
-        },
-        {
-            name: "Abba Sali",
-            position: "Software Developer",
-            phone: "691 84 69 22",
-            mail: "abbasaliaboubakar@gmail.com",
-            marker: "Maroua",
-            sex: "F"
-        },
-        {
-            name: "Abba Sali",
-            position: "Software Developer",
-            phone: "691 84 69 22",
-            mail: "abbasaliaboubakar@gmail.com",
-            marker: "Maroua",
-            sex: "F"
-        },
-        {
-            name: "Abba Sali",
-            position: "Software Developer",
-            phone: "691 84 69 22",
-            mail: "abbasaliaboubakar@gmail.com",
-            marker: "Maroua",
-            sex: "M"
-        },
-        {
-            name: "Abba Sali",
-            position: "Software Developer",
-            phone: "691 84 69 22",
-            mail: "abbasaliaboubakar@gmail.com",
-            marker: "Maroua",
-            sex: "F"
-        },
-        {
-            name: "Abba Sali",
-            position: "Software Developer",
-            phone: "691 84 69 22",
-            mail: "abbasaliaboubakar@gmail.com",
-            marker: "Maroua",
-            sex: "F"
-        },
-        {
-            name: "Abba Sali",
-            position: "Software Developer",
-            phone: "691 84 69 22",
-            mail: "abbasaliaboubakar@gmail.com",
-            marker: "Maroua",
-            sex: "M"
-        },
-    ];
     return (
         <div className={'py-8 md:py-12 bg-[#FFEBF1]'}>
             <div className="container mx-auto">
@@ -90,7 +61,7 @@ const Profiles = () => {
                 </div>
                 <div className={'my-10 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'}>
                     {
-                        annonces.map((item, index) => {
+                        data?.service?.content.map((item: any, index: number) => {
                             return (
                                 path !== "/services" ?
                                     index < 4 && (<Card key={index}>
@@ -115,34 +86,25 @@ const Profiles = () => {
                                                     <Flex>
                                                         <FaPhone color="gray" size={14}/>
                                                         <Text as="div" size="2" ml={"2"} color="gray">
-                                                            Telephone
+                                                            {item.phone}
                                                         </Text>
                                                     </Flex>
-                                                    <Text as="div" size="2" color="gray">
-                                                        {item.phone}
-                                                    </Text>
                                                 </Flex>
                                                 <Flex pt={"4"} justify="between" align="center">
                                                     <Flex>
                                                         <FaMailBulk color="gray" size={14}/>
                                                         <Text as="div" size="2" ml={"2"} color="gray">
-                                                            Mail
+                                                            {item.mail}
                                                         </Text>
                                                     </Flex>
-                                                    <Text as="div" size="2" color="gray">
-                                                        {item.mail}
-                                                    </Text>
                                                 </Flex>
                                                 <Flex pt={"4"} justify="between" align="center">
                                                     <Flex>
                                                         <FaMapMarker color="gray" size={14}/>
                                                         <Text as="div" size="2" ml={"2"} color="gray">
-                                                            Position
+                                                            {item.marker}
                                                         </Text>
                                                     </Flex>
-                                                    <Text as="div" size="2" color="gray">
-                                                        {item.marker}
-                                                    </Text>
                                                 </Flex>
                                             </Box>
                                         </Card>
@@ -169,34 +131,25 @@ const Profiles = () => {
                                                 <Flex>
                                                     <FaPhone color="gray" size={14}/>
                                                     <Text as="div" size="2" ml={"2"} color="gray">
-                                                        Telephone
+                                                        {item.phone}
                                                     </Text>
                                                 </Flex>
-                                                <Text as="div" size="2" color="gray">
-                                                    {item.phone}
-                                                </Text>
                                             </Flex>
                                             <Flex pt={"4"} justify="between" align="center">
                                                 <Flex>
                                                     <FaMailBulk color="gray" size={14}/>
                                                     <Text as="div" size="2" ml={"2"} color="gray">
-                                                        Mail
+                                                        {item.mail}
                                                     </Text>
                                                 </Flex>
-                                                <Text as="div" size="2" color="gray">
-                                                    {item.mail}
-                                                </Text>
                                             </Flex>
                                             <Flex pt={"4"} justify="between" align="center">
                                                 <Flex>
                                                     <FaMapMarker color="gray" size={14}/>
                                                     <Text as="div" size="2" ml={"2"} color="gray">
-                                                        Position
+                                                        {item.marker}
                                                     </Text>
                                                 </Flex>
-                                                <Text as="div" size="2" color="gray">
-                                                    {item.marker}
-                                                </Text>
                                             </Flex>
                                         </Box>
                                     </Card>
@@ -214,63 +167,70 @@ const Profiles = () => {
                         </Dialog.Trigger>
                         <Dialog.Content style={{maxWidth: 450}}>
                             <Dialog.Title>Ajouter un service</Dialog.Title>
-                            <Flex direction="column" gap="3">
-                                <label>
-                                    <Text as="div" size="2" mb="1" weight="bold">
-                                        Nom
-                                    </Text>
-                                    <TextField.Input
-                                        defaultValue="Freja Johnsen"
-                                        placeholder="Entrez votre nom"
-                                    />
-                                </label>
-                                <label>
-                                    <Text as="div" size="2" mb="1" weight="bold">
-                                        Position
-                                    </Text>
-                                    <TextField.Input
-                                        defaultValue="Software Developer"
-                                        placeholder="Profile"
-                                    />
-                                </label>
-                                <label>
-                                    <Text as="div" size="2" mb="1" weight="bold">
-                                        Position
-                                    </Text>
-                                    <TextField.Input
-                                        defaultValue="Maroua"
-                                        placeholder="Entrez votre position"
-                                    />
-                                </label>
-                                <label>
-                                    <Text as="div" size="2" mb="1" weight="bold">
-                                        Email
-                                    </Text>
-                                    <TextField.Input
-                                        defaultValue="abbasali@example.com"
-                                        placeholder="Entrez votre email"
-                                    />
-                                </label>
-                                <label>
-                                    <Text as="div" size="2" mb="1" weight="bold">
-                                        Sexe
-                                    </Text>
-                                    <TextField.Input
-                                        defaultValue="abbasali@example.com"
-                                        placeholder="Entrez votre email"
-                                    />
-                                </label>
-                            </Flex>
-                            <Flex gap="3" mt="4" justify="end">
-                                <Dialog.Close>
-                                    <Button variant="soft" color="gray">
-                                        Cancel
-                                    </Button>
-                                </Dialog.Close>
-                                <Dialog.Close>
-                                    <Button onClick={handleSuccess} color={"red"}>Save</Button>
-                                </Dialog.Close>
-                            </Flex>
+                            <form onSubmit={handleService}>
+                                <Flex direction="column" gap="3">
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Nom
+                                        </Text>
+                                        <TextField.Input
+                                            defaultValue="Abba Sali"
+                                            onChange={(e) => setName(e.target.value)}
+                                            placeholder="Entrez votre nom"
+                                        />
+                                    </label>
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Email
+                                        </Text>
+                                        <TextField.Input
+                                            defaultValue="abbasali@example.com"
+                                            onChange={(e) => setMail(e.target.value)}
+                                            placeholder="Entrez votre email"
+                                        />
+                                    </label>
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Profile
+                                        </Text>
+                                        <TextField.Input
+                                            defaultValue="Software Developer"
+                                            onChange={(e) => setPosition(e.target.value)}
+                                            placeholder="Profile"
+                                        />
+                                    </label>
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Position
+                                        </Text>
+                                        <TextField.Input
+                                            defaultValue="Maroua"
+                                            onChange={(e) => setMarker(e.target.value)}
+                                            placeholder="Entrez votre position"
+                                        />
+                                    </label>
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Telephone
+                                        </Text>
+                                        <TextField.Input
+                                            defaultValue="691 84 69 22"
+                                            onChange={(e) => setPhone(e.target.value)}
+                                            placeholder="Entrez votre numero"
+                                        />
+                                    </label>
+                                </Flex>
+                                <Flex gap="3" mt="4" justify="end">
+                                    <Dialog.Close>
+                                        <Button variant="soft" color="gray">
+                                            Annuler
+                                        </Button>
+                                    </Dialog.Close>
+                                    <Dialog.Close>
+                                        <Button type="submit" color={"red"}>Enregistrer</Button>
+                                    </Dialog.Close>
+                                </Flex>
+                            </form>
                         </Dialog.Content>
                     </Dialog.Root>
                 </div>

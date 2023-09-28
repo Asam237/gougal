@@ -6,7 +6,7 @@ const Annonce = require("../models/annonces");
 
 router.post("/", async (req, res) => {
     const {name, position, phone, mail, marker, title, description, approve} = req.body;
-    if (name == null || position == null || phone == null || mail == null || null || marker == null || title == null || description == null)
+    if (name == null || position == null || phone == null || mail == null || marker == null || title == null || description == null)
         return res.status(400).send(Consts.standardErrorResponse(ErrorCodes.INVALID_PARAMS));
     let annonce = Annonce.register({name, position, phone, mail, marker, title, description, approve: false});
     annonce = await annonce.save();

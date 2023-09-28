@@ -1,87 +1,53 @@
 import {Avatar, Box, Button, Card, Dialog, Flex, Text, TextArea, TextField} from "@radix-ui/themes";
-import {FaMailBulk, FaMapMarker, FaPhone} from "react-icons/fa";
+import {FaMailBulk, FaPhone} from "react-icons/fa";
 import Link from "next/link";
 import {useEffect, useState} from "react";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
+import {findAllAnnonces, newAnnonce} from "../../hooks/api";
 
 const Annonces = () => {
     const [path, setPath] = useState("");
+    const queryClient = useQueryClient();
 
     useEffect(() => {
         setPath(window.location.pathname);
     }, []);
 
-    const annonces = [
-        {
-            name: "Abba Sali",
-            position: "Software Developer",
-            phone: "691 84 69 22",
-            mail: "abbasaliaboubakar@gmail.com",
-            marker: "Maroua",
-            sex: "M",
-            title: "Cherche Femme de Ménage",
-            description: "Bonjour, recherche personne pour faire du ménage 1 fois par semaine idéalement dans l'après midi jeudi ou vendredi sur Hambye 1 à 2H de travail/semaine"
+    const {data} = useQuery({
+        queryKey: ["annonces"],
+        queryFn: async () => {
+            const res = await findAllAnnonces();
+            return res.data;
+        }
+    });
+
+    const addAnnonceMutation = useMutation({
+        mutationKey: ["annonces"],
+        mutationFn: async () => {
+            await newAnnonce(dataAnnonce);
         },
-        {
-            name: "Abba Sali",
-            position: "Software Developer",
-            phone: "691 84 69 22",
-            mail: "abbasaliaboubakar@gmail.com",
-            marker: "Maroua",
-            sex: "M",
-            title: "Cherche Femme de Ménage",
-            description: "Bonjour, recherche personne pour faire du ménage 1 fois par semaine idéalement dans l'après midi jeudi ou vendredi sur Hambye 1 à 2H de travail/semaine"
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: ['annonces']})
         },
-        {
-            name: "Abba Sali",
-            position: "Software Developer",
-            phone: "691 84 69 22",
-            mail: "abbasaliaboubakar@gmail.com",
-            marker: "Maroua",
-            sex: "M",
-            title: "Cherche Femme de Ménage",
-            description: "Bonjour, recherche personne pour faire du ménage 1 fois par semaine idéalement dans l'après midi jeudi ou vendredi sur Hambye 1 à 2H de travail/semaine"
-        },
-        {
-            name: "Abba Sali",
-            position: "Software Developer",
-            phone: "691 84 69 22",
-            mail: "abbasaliaboubakar@gmail.com",
-            marker: "Maroua",
-            sex: "M",
-            title: "Cherche Femme de Ménage",
-            description: "Bonjour, recherche personne pour faire du ménage 1 fois par semaine idéalement dans l'après midi jeudi ou vendredi sur Hambye 1 à 2H de travail/semaine"
-        },
-        {
-            name: "Abba Sali",
-            position: "Software Developer",
-            phone: "691 84 69 22",
-            mail: "abbasaliaboubakar@gmail.com",
-            marker: "Maroua",
-            sex: "F",
-            title: "Cherche Femme de Ménage",
-            description: "Bonjour, recherche personne pour faire du ménage 1 fois par semaine idéalement dans l'après midi jeudi ou vendredi sur Hambye 1 à 2H de travail/semaine"
-        },
-        {
-            name: "Abba Sali",
-            position: "Software Developer",
-            phone: "691 84 69 22",
-            mail: "abbasaliaboubakar@gmail.com",
-            marker: "Maroua",
-            sex: "F",
-            title: "Cherche Femme de Ménage",
-            description: "Bonjour, recherche personne pour faire du ménage 1 fois par semaine idéalement dans l'après midi jeudi ou vendredi sur Hambye 1 à 2H de travail/semaine"
-        },
-        {
-            name: "Abba Sali",
-            position: "Software Developer",
-            phone: "691 84 69 22",
-            mail: "abbasaliaboubakar@gmail.com",
-            marker: "Maroua",
-            sex: "M",
-            title: "Cherche Femme de Ménage",
-            description: "Bonjour, recherche personne pour faire du ménage 1 fois par semaine idéalement dans l'après midi jeudi ou vendredi sur Hambye 1 à 2H de travail/semaine"
-        },
-    ];
+        onError: () => {
+        }
+    });
+
+    const [name, setName] = useState("");
+    const [position, setPosition] = useState("");
+    const [phone, setPhone] = useState("");
+    const [mail, setMail] = useState("");
+    const [marker, setMarker] = useState("");
+    const [sex, setSex] = useState("");
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+
+    const dataAnnonce: any = {name, position, phone, mail, marker, title, description};
+    const handleAnnonce = (e: any) => {
+        e.preventDefault();
+        addAnnonceMutation.mutate(dataAnnonce);
+    }
+
     return (
         <div className={'py-8 md:py-12'}>
             <div className="container mx-auto">
@@ -94,7 +60,7 @@ const Annonces = () => {
                 </div>
                 <div className={'my-10 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'}>
                     {
-                        annonces.map((item, index) => {
+                        data?.annonce?.content?.map((item: any, index: number) => {
                             return (
                                 path !== "/annonces" ?
                                     index < 4 && (<Card key={index}>
@@ -127,23 +93,17 @@ const Annonces = () => {
                                                     <Flex>
                                                         <FaPhone color="gray" size={14}/>
                                                         <Text as="div" size="2" ml={"2"} color="gray">
-                                                            Telephone
+                                                            {item.phone}
                                                         </Text>
                                                     </Flex>
-                                                    <Text as="div" size="2" color="gray">
-                                                        {item.phone}
-                                                    </Text>
                                                 </Flex>
                                                 <Flex pt={"4"} justify="between" align="center">
                                                     <Flex>
                                                         <FaMailBulk color="gray" size={14}/>
                                                         <Text as="div" size="2" ml={"2"} color="gray">
-                                                            Mail
+                                                            {item.mail}
                                                         </Text>
                                                     </Flex>
-                                                    <Text as="div" size="2" color="gray">
-                                                        {item.mail}
-                                                    </Text>
                                                 </Flex>
                                             </Box>
                                         </Card>
@@ -166,27 +126,29 @@ const Annonces = () => {
                                         </Flex>
                                         <Box p={"3"}>
                                             <hr/>
+                                            <Flex direction="column">
+                                                <Text as="div" size="4" my="4">
+                                                    {item.title}
+                                                </Text>
+                                                <Text as="div" size="2" color="gray">
+                                                    {item.description}
+                                                </Text>
+                                            </Flex>
                                             <Flex pt={"4"} justify="between" align="center">
                                                 <Flex>
                                                     <FaPhone color="gray" size={14}/>
                                                     <Text as="div" size="2" ml={"2"} color="gray">
-                                                        Telephone
+                                                        {item.phone}
                                                     </Text>
                                                 </Flex>
-                                                <Text as="div" size="2" color="gray">
-                                                    {item.phone}
-                                                </Text>
                                             </Flex>
                                             <Flex pt={"4"} justify="between" align="center">
                                                 <Flex>
                                                     <FaMailBulk color="gray" size={14}/>
                                                     <Text as="div" size="2" ml={"2"} color="gray">
-                                                        Mail
+                                                        {item.mail}
                                                     </Text>
                                                 </Flex>
-                                                <Text as="div" size="2" color="gray">
-                                                    {item.mail}
-                                                </Text>
                                             </Flex>
                                         </Box>
                                     </Card>
@@ -205,81 +167,90 @@ const Annonces = () => {
                         </Dialog.Trigger>
                         <Dialog.Content style={{maxWidth: 450}}>
                             <Dialog.Title>Ajouter une annonce</Dialog.Title>
-                            <Flex direction="column" gap="3">
-                                <label>
-                                    <Text as="div" size="2" mb="1" weight="bold">
-                                        Title
-                                    </Text>
-                                    <TextField.Input
-                                        defaultValue="title"
-                                        placeholder="Title"
-                                    />
-                                </label>
-                                <label>
-                                    <Text as="div" size="2" mb="1" weight="bold">
-                                        Description
-                                    </Text>
-                                    <TextArea
-                                        defaultValue="descripton"
-                                        placeholder="description"
-                                    />
-                                </label>
-                                <label>
-                                    <Text as="div" size="2" mb="1" weight="bold">
-                                        Nom
-                                    </Text>
-                                    <TextField.Input
-                                        defaultValue="Freja Johnsen"
-                                        placeholder="Entrez votre nom"
-                                    />
-                                </label>
-                                <label>
-                                    <Text as="div" size="2" mb="1" weight="bold">
-                                        Position
-                                    </Text>
-                                    <TextField.Input
-                                        defaultValue="Software Developer"
-                                        placeholder="Profile"
-                                    />
-                                </label>
-                                <label>
-                                    <Text as="div" size="2" mb="1" weight="bold">
-                                        Position
-                                    </Text>
-                                    <TextField.Input
-                                        defaultValue="Maroua"
-                                        placeholder="Entrez votre position"
-                                    />
-                                </label>
-                                <label>
-                                    <Text as="div" size="2" mb="1" weight="bold">
-                                        Email
-                                    </Text>
-                                    <TextField.Input
-                                        defaultValue="abbasali@example.com"
-                                        placeholder="Entrez votre email"
-                                    />
-                                </label>
-                                <label>
-                                    <Text as="div" size="2" mb="1" weight="bold">
-                                        Sexe
-                                    </Text>
-                                    <TextField.Input
-                                        defaultValue="abbasali@example.com"
-                                        placeholder="Entrez votre email"
-                                    />
-                                </label>
-                            </Flex>
-                            <Flex gap="3" mt="4" justify="end">
-                                <Dialog.Close>
-                                    <Button variant="soft" color="gray">
-                                        Cancel
-                                    </Button>
-                                </Dialog.Close>
-                                <Dialog.Close>
-                                    <Button color={"red"}>Save</Button>
-                                </Dialog.Close>
-                            </Flex>
+                            <form onSubmit={handleAnnonce}>
+                                <Flex direction="column" gap="3">
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Title
+                                        </Text>
+                                        <TextField.Input
+                                            defaultValue="title"
+                                            onChange={(e) => setTitle(e.target.value)}
+                                            placeholder="Title"
+                                        />
+                                    </label>
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Description
+                                        </Text>
+                                        <TextArea
+                                            defaultValue="descripton"
+                                            onChange={(e) => setDescription(e.target.value)}
+                                            placeholder="description"
+                                        />
+                                    </label>
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Nom
+                                        </Text>
+                                        <TextField.Input
+                                            defaultValue="Abba Sali"
+                                            onChange={(e) => setName(e.target.value)}
+                                            placeholder="Entrez votre nom"
+                                        />
+                                    </label>
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Telephone
+                                        </Text>
+                                        <TextField.Input
+                                            defaultValue="691 84 69 22"
+                                            onChange={(e) => setPhone(e.target.value)}
+                                            placeholder="Telephone"
+                                        />
+                                    </label>
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Position
+                                        </Text>
+                                        <TextField.Input
+                                            defaultValue="Software Developer"
+                                            onChange={(e) => setPosition(e.target.value)}
+                                            placeholder="Profile"
+                                        />
+                                    </label>
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Position
+                                        </Text>
+                                        <TextField.Input
+                                            onChange={(e) => setMarker(e.target.value)}
+                                            defaultValue="Maroua"
+                                            placeholder="Entrez votre position"
+                                        />
+                                    </label>
+                                    <label>
+                                        <Text as="div" size="2" mb="1" weight="bold">
+                                            Email
+                                        </Text>
+                                        <TextField.Input
+                                            defaultValue="mail@example.com"
+                                            onChange={(e) => setMail(e.target.value)}
+                                            placeholder="Entrez votre email"
+                                        />
+                                    </label>
+                                </Flex>
+                                <Flex gap="3" mt="4" justify="end">
+                                    <Dialog.Close>
+                                        <Button variant="soft" color="gray">
+                                            Annuler
+                                        </Button>
+                                    </Dialog.Close>
+                                    <Dialog.Close>
+                                        <Button type="submit" color={"red"}>Enregistrer</Button>
+                                    </Dialog.Close>
+                                </Flex>
+                            </form>
                         </Dialog.Content>
                     </Dialog.Root>
                 </div>
