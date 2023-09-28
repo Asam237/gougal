@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://localhost:3010"
+    baseURL: "http://195.201.138.208:3010"
 })
 
 export const findAllAnnonces = () => {
