@@ -17,12 +17,15 @@ const mongoose = require('mongoose');
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 
 const {MONGODB_URL} = require('./src/config/consts');
 mongoose.connect(MONGODB_URL).then(function () {
     console.log("connected to database");
 
+    const annoncesRouter = require("./src/routes/annonces");
+
+    app.use("/annonces", annoncesRouter);
     app.use('/swagger', swaggerUi.serve, swaggerUi.setup(specs));
 });
 

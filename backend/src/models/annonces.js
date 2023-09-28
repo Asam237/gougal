@@ -26,7 +26,7 @@ const mongoose = require("mongoose");
  *                 description:
  *                     type: string
  */
-const Annonce = mongoose.models(
+const Annonce = mongoose.model(
     "annonces",
     new mongoose.Schema({
         ...Model.base,
@@ -38,6 +38,19 @@ const Annonce = mongoose.models(
         sex: {type: String, enum: ["M", "S"]},
         title: {type: String},
         description: {type: String}
+    }, {
+        statics: {
+            register(input) {
+                return new Annonce(input);
+            },
+            getOne(query) {
+                return Annonce.findOne(query);
+            },
+            findPaginated(query, page, size) {
+                return Annonce.find(query).skip(page * size)
+                    .limit(size);
+            }
+        }
     })
 );
 

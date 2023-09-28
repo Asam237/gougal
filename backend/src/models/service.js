@@ -21,7 +21,7 @@ const mongoose = require("mongoose");
  *                 sex:
  *                     type: string
  */
-const Service = mongoose.models(
+const Service = mongoose.model(
     "services",
     new mongoose.Schema({
         ...Model.base,
@@ -31,6 +31,20 @@ const Service = mongoose.models(
         mail: {type: String},
         marker: {type: String},
         sex: {type: String, enum: ["M", "S"]},
+    }, {
+        statics: {
+            register(input) {
+                return new Service(input);
+            },
+            findPaginated(query, page, size) {
+                return Service.find(query)
+                    .skip(page * size)
+                    .limit(size);
+            },
+            getOne(query) {
+                return Service.findOne(query);
+            }
+        }
     })
 );
 
