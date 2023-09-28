@@ -2,13 +2,20 @@ import {Avatar, Box, Button, Card, Dialog, Flex, Text, TextField} from "@radix-u
 import {FaMailBulk, FaMapMarker, FaPhone} from "react-icons/fa";
 import Link from "next/link";
 import {useEffect, useState} from "react";
+import Success from "../Success";
 
 const Profiles = () => {
 
     const [path, setPath] = useState("");
+    const [success, setSuccess] = useState(false);
+
     useEffect(() => {
         setPath(window.location.pathname);
     }, []);
+
+    const handleSuccess = () => {
+        setSuccess(true);
+    }
 
     const annonces = [
         {
@@ -85,7 +92,6 @@ const Profiles = () => {
                     {
                         annonces.map((item, index) => {
                             return (
-
                                 path !== "/services" ?
                                     index < 4 && (<Card key={index}>
                                             <Flex gap="3" align="center">
@@ -262,13 +268,14 @@ const Profiles = () => {
                                     </Button>
                                 </Dialog.Close>
                                 <Dialog.Close>
-                                    <Button color={"red"}>Save</Button>
+                                    <Button onClick={handleSuccess} color={"red"}>Save</Button>
                                 </Dialog.Close>
                             </Flex>
                         </Dialog.Content>
                     </Dialog.Root>
                 </div>
             </div>
+            {success && <Success valid={() => setSuccess(false)}/>}
         </div>
     );
 }
