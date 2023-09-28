@@ -6,5 +6,13 @@ services:
       - "27017:27017"
     volumes:
       - db:/data/db
+  api:
+    container_name: gougla-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3010:3010"
 volumes:
   db:
