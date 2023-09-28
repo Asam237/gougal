@@ -1,8 +1,11 @@
 FROM node:16.13.1-alpine as builde
-RUN mkdir /api
-WORKDIR /api
-ADD ./package.json ./
+COPY ./package.json ./
+COPY ./yarn.lock ./
 RUN yarn install
-COPY . /api
+COPY . .
+ENV HOST 0.0.0.0
+EXPOSE 3010
 CMD ["yarn", "start"]
+
+
 
