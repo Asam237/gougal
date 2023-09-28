@@ -25,6 +25,8 @@ const mongoose = require("mongoose");
  *                     type: string
  *                 description:
  *                     type: string
+ *                 approve:
+ *                     type: boolean
  */
 const Annonce = mongoose.model(
     "annonces",
@@ -37,7 +39,8 @@ const Annonce = mongoose.model(
         marker: {type: String},
         sex: {type: String, enum: ["M", "S"]},
         title: {type: String},
-        description: {type: String}
+        description: {type: String},
+        approve: {type: Boolean},
     }, {
         statics: {
             register(input) {
