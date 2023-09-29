@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://195.201.138.208:3010"
+    baseURL: "https://gougal-api.abbasali.cm"
 })
 
 export const findAllAnnonces = () => {
