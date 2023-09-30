@@ -1,4 +1,4 @@
-import {Avatar, Box, Button, Card, Dialog, Flex, Text, TextArea, TextField} from "@radix-ui/themes";
+import {Avatar, Box, Card, Flex, Text} from "@radix-ui/themes";
 import {FaMailBulk, FaPhone} from "react-icons/fa";
 import Link from "next/link";
 import {useEffect, useState} from "react";
@@ -159,101 +159,11 @@ const Annonces = () => {
                     }
                 </div>
                 <div className={'w-full flex justify-center'}>
-                    <Dialog.Root>
-                        <Dialog.Trigger>
-                            <button
-                                className={"rounded-full text-white px-6 py-2 bg-green-500 text-base"}>Ajouter une
-                                annonce
-                            </button>
-                        </Dialog.Trigger>
-                        <Dialog.Content style={{maxWidth: 450}}>
-                            <Dialog.Title>Ajouter une annonce</Dialog.Title>
-                            <form onSubmit={handleAnnonce}>
-                                <Flex direction="column" gap="3">
-                                    <label>
-                                        <Text as="div" size="2" mb="1" weight="bold">
-                                            Title
-                                        </Text>
-                                        <TextField.Input
-                                            defaultValue="title"
-                                            onChange={(e) => setTitle(e.target.value)}
-                                            placeholder="Title"
-                                        />
-                                    </label>
-                                    <label>
-                                        <Text as="div" size="2" mb="1" weight="bold">
-                                            Description
-                                        </Text>
-                                        <TextArea
-                                            defaultValue="descripton"
-                                            onChange={(e) => setDescription(e.target.value)}
-                                            placeholder="description"
-                                        />
-                                    </label>
-                                    <label>
-                                        <Text as="div" size="2" mb="1" weight="bold">
-                                            Nom
-                                        </Text>
-                                        <TextField.Input
-                                            defaultValue="Abba Sali"
-                                            onChange={(e) => setName(e.target.value)}
-                                            placeholder="Entrez votre nom"
-                                        />
-                                    </label>
-                                    <label>
-                                        <Text as="div" size="2" mb="1" weight="bold">
-                                            Telephone
-                                        </Text>
-                                        <TextField.Input
-                                            defaultValue="691 84 69 22"
-                                            onChange={(e) => setPhone(e.target.value)}
-                                            placeholder="Telephone"
-                                        />
-                                    </label>
-                                    <label>
-                                        <Text as="div" size="2" mb="1" weight="bold">
-                                            Position
-                                        </Text>
-                                        <TextField.Input
-                                            defaultValue="Software Developer"
-                                            onChange={(e) => setPosition(e.target.value)}
-                                            placeholder="Profile"
-                                        />
-                                    </label>
-                                    <label>
-                                        <Text as="div" size="2" mb="1" weight="bold">
-                                            Position
-                                        </Text>
-                                        <TextField.Input
-                                            onChange={(e) => setMarker(e.target.value)}
-                                            defaultValue="Maroua"
-                                            placeholder="Entrez votre position"
-                                        />
-                                    </label>
-                                    <label>
-                                        <Text as="div" size="2" mb="1" weight="bold">
-                                            Email
-                                        </Text>
-                                        <TextField.Input
-                                            defaultValue="mail@example.com"
-                                            onChange={(e) => setMail(e.target.value)}
-                                            placeholder="Entrez votre email"
-                                        />
-                                    </label>
-                                </Flex>
-                                <Flex gap="3" mt="4" justify="end">
-                                    <Dialog.Close>
-                                        <Button variant="soft" color="gray">
-                                            Annuler
-                                        </Button>
-                                    </Dialog.Close>
-                                    <Dialog.Close>
-                                        <Button type="submit" color={"red"}>Enregistrer</Button>
-                                    </Dialog.Close>
-                                </Flex>
-                            </form>
-                        </Dialog.Content>
-                    </Dialog.Root>
+                    <Link
+                        href={"https://github.com/Asam237/gougal/issues/new?assignees=&labels=&template=take-the-announcement.yaml&title=DO+NOT+EDIT+-+takes+the-announcement.yaml&title=DO+NOT+EDIT+-+takes+the+announcement"}
+                        className={"rounded-full text-white px-6 py-2 bg-green-500 text-base"}>Ajouter une
+                        annonce
+                    </Link>
                 </div>
             </div>
         </div>

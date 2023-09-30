@@ -1,0 +1,56 @@
+name: Process annoucement's entry
+on:
+  issues:
+    types: [ opened ]
+concurrency: 'main'
+jobs:
+  take_annoucement:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.title, 'DO NOT EDIT') && contains(github.event.issue.title, 'takes the developer annoucement')
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GA_WORKFLOW_DEPLOYMENTS_TOKEN }}
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - uses: elhmn/github-issue-parser@release-parse-checkbox
+        id: issue-parser
+        with:
+          template-path: .github/ISSUE_TEMPLATE/take-the-annoucement.yaml
+
+      - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > annoucement_submission.json
+
+      - run: |
+          cat annoucement_submission.json | jq
+
+      - name: Set convert json to yaml
+        shell: bash
+        run: |
+          cat annoucement_submission.json | yq e '{"items": [.]}' -P - > annoucement_submission.yaml
+
+      - run: cat annoucement_submission.yaml
+
+      - run: cat ./src/res/annoucement.yaml
+
+      - name: Set convert json to yaml
+        shell: bash
+        run: |
+          yq ea '. as $item ireduce ({}; . *+ $item)' -i ./src/res/annoucement.yaml annoucement_submission.yaml
+
+      - run: cat ./src/res/annoucement.yaml
+
+      - name: Commit changes
+        shell: bash
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com" && \
+          git config --global user.name "github-actions[bot]" && \
+          git add ./src/res/annoucement.yaml && \
+          git commit -m 'new annoucement answer' && \
+          git push
+
+      - uses: peter-evans/close-issue@v1
+        with:
+          comment: Your annoucement answer was submitted and will be deployed in few minutes here https://devannoucement.osscameroon.com.
