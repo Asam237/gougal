@@ -1,7 +1,8 @@
-import {FaBars, FaGithub, FaHome, FaTimes} from "react-icons/fa";
+import {FaBars, FaDesktop, FaGithub, FaTimes} from "react-icons/fa";
 import {useRouter} from "next/router";
 import {useState} from "react";
 import Link from "next/link";
+import {Text} from "@radix-ui/themes";
 
 const Header = () => {
     const router = useRouter();
@@ -17,9 +18,10 @@ const Header = () => {
                 <div className={"flex justify-between items-center h-full"}>
                     <div onClick={toHome} className={"bg-white cursor-pointer"}>
                         <h2 className={"text-black font-bold text-xl flex items-center"}>
-                            <FaHome size={25} className={"text-black"}/>
-                            <span className={"pl-2"}>G</span>ou
-                            <span className={"bg-white"}>G</span>al
+                            <FaDesktop size={25} className={"text-gray-700"}/>
+                            <div className={'ml-2'}>
+                                <Text className={'text-gray-700'}>Gougal</Text>
+                            </div>
                         </h2>
                         <h4 className={"uppercase text-xs text-gray-700"}>
                             Engagez les meilleurs.
@@ -58,7 +60,8 @@ const Header = () => {
                                 className="cursor-pointer"
                                 onClick={() => setOpen(!open)}
                             />
-                            <Link href={"/services"}>
+                            <Link
+                                href={"https://github.com/Asam237/gougal/issues/new?assignees=&labels=&template=take-the-announcement.yaml&title=DO+NOT+EDIT+-+takes+the-announcement.yaml&title=DO+NOT+EDIT+-+takes+the+announcement"}>
                                 <button
                                     className={
                                         "rounded-full text-gray-200 px-6 py-1 border-2 border-gray-200 text-base mt-6"
