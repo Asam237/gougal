@@ -6,7 +6,7 @@ const AppLayout = ({children}: any) => {
     return (
         <>
             <Head>
-                <title>Annonces gratuites - Gougal</title>
+                <title>Trouvez des employés qui répondent à vos critères de recrutement</title>
                 <meta name="description" content=""/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico"/>
