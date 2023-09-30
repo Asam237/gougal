@@ -1,6 +1,8 @@
 ## Portfolio
 
 Gougal App
+![Screenshot_20230930_160328](https://github.com/Asam237/gougal/assets/34966088/f2044733-bc42-4a62-a373-1cf2acc72087)
+
 <br/>
 
 ## Stack
