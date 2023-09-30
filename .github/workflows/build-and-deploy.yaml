@@ -22,4 +22,4 @@ jobs:
           service: profile
           type: compose
           env: prod
-          file: take-the-announcement.yaml
+          file: take-the-profile.yaml

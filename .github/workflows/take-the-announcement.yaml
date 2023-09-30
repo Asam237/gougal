@@ -17,7 +17,7 @@ jobs:
       - uses: elhmn/github-issue-parser@release-parse-checkbox
         id: issue-parser
         with:
-          template-path: .github/ISSUE_TEMPLATE/take-the-announcement.yaml
+          template-path: .github/ISSUE_TEMPLATE/take-the-profile.yaml
 
       - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > announcement_submission.json
 

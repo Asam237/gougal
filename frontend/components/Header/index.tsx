@@ -36,7 +36,7 @@ const Header = () => {
                             />
                             <Link
                                 href={
-                                    "https://github.com/Asam237/gougal/issues/new?assignees=&labels=&template=take-the-announcement.yaml&title=DO+NOT+EDIT+-+takes+the-announcement.yaml&title=DO+NOT+EDIT+-+takes+the+announcement"
+                                    "https://github.com/Asam237/gougal/issues/new?assignees=&labels=&template=take-the-announcement.yaml&title=DO+NOT+EDIT+-+takes+the-profile.yaml&title=DO+NOT+EDIT+-+takes+the+profile"
                                 }
                                 className={
                                     "rounded-full bg-gray-700 px-6 py-1 border-green-500 text-base hidden md:flex text-white"
