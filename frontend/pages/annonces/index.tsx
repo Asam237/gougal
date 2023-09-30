@@ -4,9 +4,7 @@ import Annonces from "../../components/Annonces";
 const AnnoncePage = () => {
     return (
         <AppLayout>
-            <main style={{background: '#eeffeb'}}>
-                <Annonces/>
-            </main>
+            <Annonces/>
         </AppLayout>
     );
 }
