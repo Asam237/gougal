@@ -1,5 +1,11 @@
-import Tabs from "../components/Tabs";
+import Annonces from "../components/Annonces";
+import AppLayout from "./layout/app";
 
 export default function Index() {
-    return <Tabs/>;
+  return (
+    <AppLayout>
+      <Annonces />
+    </AppLayout>
+  );
 }
+
