@@ -3,7 +3,7 @@ import {FaMailBulk, FaPhone} from "react-icons/fa";
 import Link from "next/link";
 import {useEffect, useState} from "react";
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
-import {findAllAnnonces, newAnnonce} from "../../hooks/api";
+import {findAllAnnonces, newAnnonce} from "../../hooks/useApi";
 
 const Annonces = () => {
     const [path, setPath] = useState("");
@@ -49,7 +49,8 @@ const Annonces = () => {
     }
 
     return (
-        <div className={'py-8 md:py-12'}>
+
+        <div className={'py-8 bg-[#eeffeb]'}>
             <div className="container mx-auto">
                 <div className={"flex flex-col md:flex-row md:justify-between items-center space-y-4 md:space-y-0"}>
                     <h4 className={'text-center text-3xl font-semibold'}>Les dernières <span
@@ -63,7 +64,7 @@ const Annonces = () => {
                         data?.annonce?.content?.map((item: any, index: number) => {
                             return (
                                 path !== "/annonces" ?
-                                    index < 4 && (<Card key={index}>
+                                    index < 4 && (<Card className={'h-64'} key={index}>
                                             <Flex gap="3" align="center">
                                                 <Avatar
                                                     size="3"
@@ -108,7 +109,7 @@ const Annonces = () => {
                                             </Box>
                                         </Card>
                                     ) : (
-                                    <Card key={index}>
+                                    <Card key={index} className={'h-4'}>
                                         <Flex gap="3" align="center">
                                             <Avatar
                                                 size="3"

@@ -3,7 +3,7 @@ import {Button, Dialog, Flex, Text, TextField} from "@radix-ui/themes";
 import {useRouter} from "next/router";
 import {useState} from "react";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {newService} from "../../hooks/api";
+import {newService} from "../../hooks/useApi";
 import Link from "next/link";
 
 const Header = () => {
@@ -39,7 +39,7 @@ const Header = () => {
 
 
     return (
-        <header className={"bg-white h-16 fixed sticky left-0 top-0 z-50 border-b"}>
+        <header className={"bg-white h-16 sticky left-0 top-0 z-50 border-b"}>
             <div className="container mx-auto h-full bg-white">
                 <div className={"flex justify-between items-center h-full"}>
                     <div onClick={toHome} className={"bg-white cursor-pointer"}>

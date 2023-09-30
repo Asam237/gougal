@@ -4,7 +4,7 @@ import Link from "next/link";
 import {useEffect, useState} from "react";
 import Success from "../Success";
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
-import {findAllServices, newService} from "../../hooks/api";
+import {findAllServices, newService} from "../../hooks/useApi";
 
 const Profiles = () => {
 
@@ -47,7 +47,7 @@ const Profiles = () => {
     }
 
     return (
-        <div className={'py-8 md:py-12 bg-[#FFEBF1]'}>
+        <div className={'py-8 bg-[#FFEBF1]'}>
             <div className="container mx-auto">
                 <div className={"flex flex-col md:flex-row md:justify-between items-center space-y-4 md:space-y-0"}>
                     <h4 className={'text-center text-3xl font-semibold'}>Ils <span
@@ -64,7 +64,7 @@ const Profiles = () => {
                         data?.service?.content.map((item: any, index: number) => {
                             return (
                                 path !== "/services" ?
-                                    index < 4 && (<Card key={index}>
+                                    index < 4 && (<Card key={index} className={'h-64'}>
                                             <Flex gap="3" align="center">
                                                 <Avatar
                                                     size="3"
