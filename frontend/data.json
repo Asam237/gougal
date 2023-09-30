@@ -42,5 +42,17 @@
       "Full stack Developer",
       "DevOps Developer"
     ]
+  },
+  {
+    "name": "Adonis SIMO",
+    "linkedin_handle": "adonis-simo/",
+    "github_handle": "simo97",
+    "gitlab_handle": "simoadonis",
+    "city": "Douala",
+    "developer_type": [
+      "Full stack Developer",
+      "DevOps Developer",
+      "Web Developer"
+    ]
   }
 ]
