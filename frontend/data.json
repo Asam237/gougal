@@ -31,5 +31,15 @@
       "Frontend Developer",
       "Backend Developer"
     ]
+  },
+  {
+    "name": "Faouzi El Mansour",
+    "linkedin_handle": "faouziel-mansour-982468113/",
+    "github_handle": "elmansour1",
+    "gitlab_handle": "elmansour1",
+    "city": "Douala",
+    "developer_type": [
+      "Full stack Developer"
+    ]
   }
 ]
