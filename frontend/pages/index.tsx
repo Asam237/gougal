@@ -77,13 +77,13 @@ export default function Index({localData}: any) {
                                             </div>
                                             <hr className={'my-4'}/>
                                             <div className={'flex space-x-6 justify-center items-center my-4'}>
-                                                <Link href={"#"}>
+                                                <Link href={`https://www.linkedin.com/in/${item.linkedin_handle}`}>
                                                     <FaLinkedin size={30} className={'text-blue-700'}/>
                                                 </Link>
-                                                <Link href={"#"}>
+                                                <Link href={`https://www.github.com/${item.github_handle}`}>
                                                     <FaGithub size={30} className={'text-gray-700'}/>
                                                 </Link>
-                                                <Link href={"#"}>
+                                                <Link href={`https://www.gitlab.com/${item.gitlab_handle}`}>
                                                     <FaGitlab size={30} className={'text-red-600'}/>
                                                 </Link>
                                             </div>

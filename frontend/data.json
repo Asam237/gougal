@@ -1,35 +1,35 @@
 [
   {
+    "name": "Asam237",
+    "linkedin_handle": "abba-sali-aboubakar-mamate/",
+    "github_handle": "asam237",
+    "gitlab_handle": "asam237",
+    "city": "Maroua",
+    "developer_type": [
+      "Frontend Developer",
+      "Backend Developer"
+    ]
+  },
+  {
+    "name": "Mystro Ken",
+    "linkedin_handle": "emmanuel-kwene/",
+    "github_handle": "mystroken",
+    "gitlab_handle": "mystroken",
+    "city": "Yaoundé",
+    "developer_type": [
+      "Full stack Developer",
+      "DevOps Developer"
+    ]
+  },
+  {
     "name": "Abba Sali",
-    "linkedin_handle": "",
-    "github_handle": "",
-    "gitlab_handle": "",
+    "linkedin_handle": "abba-sali-aboubakar-mamate/",
+    "github_handle": "asam237",
+    "gitlab_handle": "asam237",
     "city": "Maroua",
     "developer_type": [
       "Frontend Developer",
       "Backend Developer"
-    ]
-  },
-  {
-    "name": "ASAM",
-    "linkedin_handle": "",
-    "github_handle": "",
-    "gitlab_handle": "",
-    "city": "Maroua",
-    "developer_type": [
-      "Frontend Developer",
-      "Backend Developer"
-    ]
-  },
-  {
-    "name": "Aboubakar",
-    "linkedin_handle": "",
-    "github_handle": "",
-    "gitlab_handle": "",
-    "city": "Maroua",
-    "developer_type": [
-      "Web Developer",
-      "Data scientist Developer"
     ]
   }
 ]
