@@ -36,7 +36,7 @@ const Header = () => {
                             />
                             <Link
                                 href={
-                                    "https://github.com/Asam237/gougal/issues/new?assignees=&labels=&template=take-the-announcement.yaml&title=DO+NOT+EDIT+-+takes+the-profile.yaml&title=DO+NOT+EDIT+-+takes+the+profile"
+                                    "https://github.com/Asam237/gougal/issues/new?assignees=&labels=&template=take-the-profile.yaml&title=DO+NOT+EDIT+-+takes+the-profile.yaml&title=DO+NOT+EDIT+-+takes+the+profile"
                                 }
                                 className={
                                     "rounded-full bg-gray-700 px-6 py-1 border-green-500 text-base hidden md:flex text-white"
@@ -62,7 +62,7 @@ const Header = () => {
                                     onClick={() => setOpen(!open)}
                                 />
                                 <Link
-                                    href={"https://github.com/Asam237/gougal/issues/new?assignees=&labels=&template=take-the-announcement.yaml&title=DO+NOT+EDIT+-+takes+the-announcement.yaml&title=DO+NOT+EDIT+-+takes+the+announcement"}>
+                                    href={"https://github.com/Asam237/gougal/issues/new?assignees=&labels=&template=take-the-profile.yaml&title=DO+NOT+EDIT+-+takes+the-profile.yaml&title=DO+NOT+EDIT+-+takes+the+announcement"}>
                                     <button
                                         className={
                                             "rounded-full text-gray-200 px-6 py-1 border-2 border-gray-200 text-base mt-6"
