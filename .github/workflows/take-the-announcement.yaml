@@ -6,11 +6,9 @@ concurrency: 'main'
 jobs:
   take_announcement:
     runs-on: ubuntu-latest
-    if: contains(github.event.issue.title, 'DO NOT EDIT') && contains(github.event.issue.title, 'takes the developer announcement')
+    if: contains(github.event.issue.title, 'DO NOT EDIT') && contains(github.event.issue.title, 'takes the profile')
     steps:
       - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GA_WORKFLOW_DEPLOYMENTS_TOKEN }}
 
       - uses: actions/setup-node@v2
         with:
@@ -33,24 +31,24 @@ jobs:
 
       - run: cat announcement_submission.yaml
 
-      - run: cat ./src/res/announcement.yaml
+      - run: cat ../../frontend/data.yaml
 
       - name: Set convert json to yaml
         shell: bash
         run: |
-          yq ea '. as $item ireduce ({}; . *+ $item)' -i ./src/res/announcement.yaml announcement_submission.yaml
+          yq ea '. as $item ireduce ({}; . *+ $item)' -i ../../frontend/data.yaml announcement_submission.yaml
 
-      - run: cat ./src/res/announcement.yaml
+      - run: cat ../../frontend/data.yaml
 
       - name: Commit changes
         shell: bash
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com" && \
           git config --global user.name "github-actions[bot]" && \
-          git add ./src/res/announcement.yaml && \
+          git add ../../frontend/data.yaml && \
           git commit -m 'new announcement answer' && \
           git push
 
       - uses: peter-evans/close-issue@v1
         with:
-          comment: Your announcement answer was submitted and will be deployed in few minutes here https://devannouncement.osscameroon.com.
+          comment: Your announcement answer was submitted and will be deployed in few minutes here https://gougal.abbasali.cm
