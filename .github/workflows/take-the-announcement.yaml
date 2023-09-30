@@ -1,10 +1,10 @@
-name: Process announcement's entry
+name: Process profile's entry
 on:
   issues:
     types: [ opened ]
 concurrency: 'main'
 jobs:
-  take_announcement:
+  take_profile:
     runs-on: ubuntu-latest
     if: contains(github.event.issue.title, 'DO NOT EDIT') && contains(github.event.issue.title, 'takes the profile')
     steps:
@@ -51,4 +51,4 @@ jobs:
 
       - uses: peter-evans/close-issue@v1
         with:
-          comment: Your announcement answer was submitted and will be deployed in few minutes here https://gougal.abbasali.cm
+          comment: Your profile answer was submitted and will be deployed in few minutes here https://gougal.abbasali.cm
