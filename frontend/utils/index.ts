@@ -1,11 +1,8 @@
-export type LoginType = {
-    email: string;
-    password: string;
-}
-
-export type RegisterType = {
-    full_name: string;
-    email: string;
-    password: string;
-    role: string;
+export type ProfileType = {
+    name: string;
+    linkedin_handle: string;
+    github_handle: string;
+    gitlab_handle: string;
+    city: string;
+    developer_type: any;
 }

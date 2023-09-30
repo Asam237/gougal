@@ -1,8 +1,15 @@
 import {Box, Card, Flex, Text, TextField} from "@radix-ui/themes";
 import {FaGithub, FaGitlab, FaLinkedin, FaLocationArrow, FaSearch} from "react-icons/fa";
 import Link from "next/link";
+import useSWR from 'swr'
+
 
 const Annonces = () => {
+    const fetcher = (url: any) => fetch(url).then((res) => res.json());
+    const {data, error} = useSWR('/api/profiles', fetcher);
+    if (error) return <div>Failed to load</div>;
+    if (!data) return <div>Loading...</div>;
+    console.log("DATA --->", data);
     return (
         <div className={"py-8"}>
             <div className="container mx-auto">
@@ -12,7 +19,8 @@ const Annonces = () => {
                     }
                 >
                     <h4 className={"text-center text-3xl font-semibold"}>
-                        Trouver la <span className={"bg-gray-600 text-white px-2 py-1"}>perle rare</span> ne vous coûtera pas une fortune.
+                        Trouver la <span className={"bg-gray-600 text-white px-2 py-1"}>perle rare</span> ne vous
+                        coûtera pas une fortune.
                     </h4>
                     <Flex direction="column" gap="3" style={{maxWidth: 400}}>
                         <TextField.Root size="3">

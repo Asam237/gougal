@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Abba Sali",
+    "linkedin_handle": "",
+    "github_handle": "",
+    "gitlab_handle": "",
+    "city": "Maroua",
+    "developer_type": [
+      "Frontend Developer",
+      "Backend Developer"
+    ]
+  },
+  {
+    "name": "ASAM",
+    "linkedin_handle": "",
+    "github_handle": "",
+    "gitlab_handle": "",
+    "city": "Maroua",
+    "developer_type": [
+      "Frontend Developer",
+      "Backend Developer"
+    ]
+  },
+  {
+    "name": "Aboubakar",
+    "linkedin_handle": "",
+    "github_handle": "",
+    "gitlab_handle": "",
+    "city": "Maroua",
+    "developer_type": [
+      "Web Developer",
+      "Data scientist Developer"
+    ]
+  }
+]
