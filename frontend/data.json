@@ -54,5 +54,29 @@
       "DevOps Developer",
       "Web Developer"
     ]
+  },
+  {
+    "name": "ABDOUL HAMID MOUAHAMAD",
+    "linkedin_handle": "abdoul-hamid-mouahamad-06025b294/",
+    "github_handle": "Hamiltongangwadjo",
+    "gitlab_handle": "hamiltonwadjo",
+    "city": "Maroua",
+    "developer_type": [
+      "Mobile Developer",
+      "Web Developer",
+      "Developer"
+    ]
+  },
+  {
+    "name": "Mouhamed Bakhoum",
+    "linkedin_handle": "mouhamed-bakhoum",
+    "github_handle": "Mouhamed-B",
+    "gitlab_handle": "Mouhamed-B",
+    "city": "None",
+    "developer_type": [
+      "Frontend Developer",
+      "Backend Developer",
+      "Mobile Developer"
+    ]
   }
 ]
