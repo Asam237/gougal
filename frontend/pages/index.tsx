@@ -1,10 +1,11 @@
 import AppLayout from "./layout/app";
-import {Box, Card, Flex, Text, TextField} from "@radix-ui/themes";
+import {Box, Card, Flex, Text, TextField, Tooltip} from "@radix-ui/themes";
 import {FaGithub, FaGitlab, FaLinkedin, FaLocationArrow, FaSearch} from "react-icons/fa";
 import Link from "next/link";
 import {getLocalData} from "../hooks/useLocalData";
 import {ProfileType} from "../utils";
 import {useState} from "react";
+import {cleanText} from "../utils/helpers";
 
 export default function Index({localData}: any) {
     const [filteredList, setFilteredList] = useState(localData);
@@ -44,17 +45,17 @@ export default function Index({localData}: any) {
                             "my-10 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
                         }
                     >
-
-
                         {
                             filteredList.map((item: ProfileType, index: number) => {
                                 return (
                                     <Card key={index} className={"h-64 bg-red-400 shadow-xl"}>
                                         <Flex ml="3" gap="3" align="center">
                                             <Box>
-                                                <Text as="div" size="6" weight="bold" className={'text-gray-700'}>
-                                                    {item.name}
-                                                </Text>
+                                                <Tooltip content={(item.name)}>
+                                                    <Text as="div" size="6" weight="bold" className={'text-gray-700'}>
+                                                        {cleanText(item.name, 16)}
+                                                    </Text>
+                                                </Tooltip>
                                                 <Text as="div" size="2" color="gray" className={'flex items-center'}>
                                                     <FaLocationArrow className={'mr-2'}/> {item.city}
                                                 </Text>
