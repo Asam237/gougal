@@ -44,7 +44,7 @@ const Header = () => {
                             >
                                 J&apos;ajoute mon profile
                             </Link>
-                            <Link href={"http://github.com/Asam237"}>
+                            <Link href={"https://github.com/Asam237/gougal"}>
                                 <FaGithub size={26} className={"text-gray-700"}/>
                             </Link>
                         </div>
